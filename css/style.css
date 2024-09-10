@@ -1,0 +1,56 @@
+/* start Dark mode toggle */
+input[type="checkbox"] {
+  display: none;
+}
+
+:root {
+  --scale: 5rem;
+  --transition: all 1s ease;
+}
+
+body {
+  transition: var(--transition);
+}
+
+.box {
+  width: var(--scale);
+  height: calc(var(--scale) / 2);
+  background-color: black;
+  border-radius: calc(var(--scale) / 4);
+  cursor: pointer;
+  position: relative;
+  flex-direction: column;
+  transition: var(--transition);
+}
+
+.ball {
+  width: calc(var(--scale) / 2);
+  height: calc(var(--scale) / 2);
+  background-color: darkgrey;
+  border-radius: 50%;
+  border: 0.188rem solid black;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  position: absolute;
+  transition: var(--transition);
+}
+
+.iconToggle {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.dark,
+.light {
+  display: flex;
+  align-items: center;
+  margin-top: 8%;
+}
+
+.iconToggle svg {
+  width: calc(var(--scale) / 3);
+  height: calc(var(--scale) / 3);
+}
+
+/* end Dark mode toggle */
