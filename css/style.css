@@ -7,10 +7,13 @@ input[type="checkbox"]:first-child {
 :root {
   --scale: 3.75rem; /* scale is used for dark mode toggle size */
   --transition: all 1s ease;
+  --headerHeight: 8vh;
+  --footerHeight: 7vh;
 }
 
 /* added a body transition for the change between light and dark mode */
 body {
+  margin: 0;
   transition: var(--transition);
 }
 
@@ -21,7 +24,6 @@ body {
   border-radius: calc(var(--scale) / 4);
   cursor: pointer;
   position: relative;
-  flex-direction: column;
   transition: var(--transition);
 }
 
@@ -56,3 +58,35 @@ body {
 }
 
 /* end Dark mode toggle */
+#wrapper {
+  flex: 1;
+}
+header{
+  background-color: #16697a;
+  min-height: var(--headerHeight);
+  display: flex;
+  align-items: center;
+}
+main {
+  min-height: calc(100vh - var(--headerHeight) - var(--footerHeight));
+}
+
+footer {
+  background-color: #ffa62b;
+  min-height: var(--footerHeight);
+}
+header,
+main,
+footer {
+  transition: var(--transition);
+}
+
+#gradient {
+  padding-left: 0.25rem;
+  margin: 0;
+  display: flex;
+  align-items: center; 
+  width: 0px;
+  height: var(--headerHeight);
+  background-color: #82c0cc;
+}
