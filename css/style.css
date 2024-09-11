@@ -1,11 +1,11 @@
 /* start Dark mode toggle */
-input[type="checkbox"] {
+input[type="checkbox"]:first-child {
   display: none;
 }
 
 /* custom variables */
 :root {
-  --scale: 5rem;
+  --scale: 3.75rem; /* scale is used for dark mode toggle size */
   --transition: all 1s ease;
 }
 
