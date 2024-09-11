@@ -31,21 +31,40 @@ function eventListenerDarkMode() {
   return;
 }
 
+/**
+ * @author Mischa Sasse
+ * @description This function creates an eventListener on the header to get mouse movement
+ * @returns void
+ */
 function eventListenerHeaderChangeWidth() {
   let header = document.getElementsByTagName("header")[0];
+  let check = document.getElementById("checkbox");
+  let gradient = document.getElementById("gradient");
   header.addEventListener("mousemove", (e) => {
-    let check = document.getElementById("checkbox");
-    let gradient = document.getElementById("gradient");
-    check.checked
-      ? gradient.setAttribute(
-          "style",
-          "width:" + e.clientX + "px; background-color:#2C626C"
-        )
-      : gradient.setAttribute(
-          "style",
-          "width:" + e.clientX + "px; background-color:#82C0CC"
-        );
+    changeGradientColor(check, gradient, e);
   });
+  return;
+}
+
+/**
+ * @author Mischa Sasse
+ * @description This function gets the location of the mouse movement and changes the gradient bars width to the mouse location and the color depending on the colortheme
+ * @param {*} check 
+ * @param {*} gradient 
+ * @param {*} e 
+ * @returns void
+ */
+function changeGradientColor(check, gradient, e) {
+  check.checked
+    ? gradient.setAttribute(
+        "style",
+        "width:" + e.clientX + "px; background-color:#2C626C"
+      )
+    : gradient.setAttribute(
+        "style",
+        "width:" + e.clientX + "px; background-color:#82C0CC"
+      );
+  return;
 }
 
 /**
@@ -60,7 +79,6 @@ function darkMode(box, ball, header, footer) {
   box.setAttribute("style", "background-color:white;");
   ball.setAttribute("style", "transform:translatex(100%);");
   document.body.setAttribute("style", "background-color:#826653;");
-  // document.getElementById('gradient').setAttribute("style", "background-color:#2C626C;")
   footer.setAttribute("style", "background-color:#884F00;");
   return;
 }
@@ -77,7 +95,6 @@ function lightMode(box, ball, header, footer) {
   box.setAttribute("style", "background-color:black;");
   ball.setAttribute("style", "transform:translatex(0%);");
   document.body.setAttribute("style", "background-color:#EDE7E3;");
-  // document.getElementById('gradient').setAttribute("style", "background-color:#82C0CC;")
   footer.setAttribute("style", "background-color:#FFA62B;");
   return;
 }
