@@ -11,11 +11,6 @@ input[type="checkbox"]:first-child {
   --footerHeight: 7vh;
 }
 
-/* added a body transition for the change between light and dark mode */
-body {
-  margin: 0;
-  transition: var(--transition);
-}
 
 .box {
   width: var(--scale);
@@ -58,22 +53,46 @@ body {
 }
 
 /* end Dark mode toggle */
-#wrapper {
-  flex: 1;
-}
-header{
+
+
+header {
   background-color: #16697a;
-  min-height: var(--headerHeight);
-  display: flex;
+  /* min-height: var(--headerHeight); */
+
   align-items: center;
+  grid-area: header;
 }
 main {
-  min-height: calc(100vh - var(--headerHeight) - var(--footerHeight));
+  grid-area: main;
+  /* min-height: calc(100vh - var(--headerHeight) - var(--footerHeight)); */
+  background-color: #EDE7E3;
+}
+#leftAside {
+  grid-area: leftAside;
+}
+#rightAside {
+  grid-area: rightAside;
+}
+#leftAside, #rightAside{
+  background-color: #82c0cc;
+}
+footer {
+  grid-area: footer;
+  background-color: #ffa62b;
+  /* min-height: var(--footerHeight); */
 }
 
-footer {
-  background-color: #ffa62b;
-  min-height: var(--footerHeight);
+/* added a body transition for the change between light and dark mode */
+body {
+  margin: 0;
+  transition: var(--transition);
+  display: grid;
+  grid-template-rows: 0.1fr 0.8fr 0.1fr;
+  grid-template-columns: 0.2fr 0.6fr 0.2fr;
+  grid-template-areas:
+    "header" "header" "header" 
+    "leftAside" "main" "rightAside"
+    "footer" "footer" "footer";
 }
 header,
 main,
@@ -85,7 +104,7 @@ footer {
   padding-left: 0.25rem;
   margin: 0;
   display: flex;
-  align-items: center; 
+  align-items: center;
   width: 0px;
   height: var(--headerHeight);
   background-color: #82c0cc;

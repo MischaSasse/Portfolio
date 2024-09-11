@@ -58,11 +58,11 @@ function changeGradientColor(check, gradient, e) {
   check.checked
     ? gradient.setAttribute(
         "style",
-        "width:" + e.clientX + "px; background-color:#2C626C"
+        "width:" + e.clientX + "px; background-color:#214A54"
       )
     : gradient.setAttribute(
         "style",
-        "width:" + e.clientX + "px; background-color:#82C0CC"
+        "width:" + e.clientX + "px; background-color:#489FB5"
       );
   return;
 }
@@ -78,8 +78,10 @@ function darkMode(box, ball, header, footer) {
   header.setAttribute("style", "background-color:#0A3038;");
   box.setAttribute("style", "background-color:white;");
   ball.setAttribute("style", "transform:translatex(100%);");
-  document.body.setAttribute("style", "background-color:#826653;");
   footer.setAttribute("style", "background-color:#884F00;");
+  document.getElementById('leftAside').setAttribute("style", "background-color:#2C626C;")
+  document.getElementById('rightAside').setAttribute("style", "background-color:#2C626C;")
+  document.getElementsByTagName('main')[0].setAttribute("style", "background-color:#826653;")
   return;
 }
 
@@ -89,13 +91,15 @@ function darkMode(box, ball, header, footer) {
  * @param {*} box
  * @param {*} ball
  * @returns void
- */
+*/
 function lightMode(box, ball, header, footer) {
   header.setAttribute("style", "background-color:#16697A;");
   box.setAttribute("style", "background-color:black;");
   ball.setAttribute("style", "transform:translatex(0%);");
-  document.body.setAttribute("style", "background-color:#EDE7E3;");
   footer.setAttribute("style", "background-color:#FFA62B;");
+  document.getElementById('leftAside').setAttribute("style", "background-color:#82C0CC;")
+  document.getElementById('rightAside').setAttribute("style", "background-color:#82C0CC;")
+  document.getElementsByTagName('main')[0].setAttribute("style", "background-color:#EDE7E3;")
   return;
 }
 
