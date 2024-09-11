@@ -3,11 +3,13 @@ input[type="checkbox"] {
   display: none;
 }
 
+/* custom variables */
 :root {
   --scale: 5rem;
   --transition: all 1s ease;
 }
 
+/* added a body transition for the change between light and dark mode */
 body {
   transition: var(--transition);
 }
@@ -45,7 +47,7 @@ body {
 .light {
   display: flex;
   align-items: center;
-  margin-top: 8%;
+  padding-top: 8%;
 }
 
 .iconToggle svg {
