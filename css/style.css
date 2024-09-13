@@ -1,8 +1,3 @@
-/* start Dark mode toggle */
-input[type="checkbox"]:first-child {
-  display: none;
-}
-
 /* custom variables */
 :root {
   --scale: 3.75rem; /* scale is used for dark mode toggle size */
@@ -11,6 +6,16 @@ input[type="checkbox"]:first-child {
   --footerHeight: 7vh;
 }
 
+/* initializing default style */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+/* start Dark mode toggle */
+input[type="checkbox"]:first-child {
+  display: none;
+}
 
 .box {
   width: var(--scale);
@@ -51,21 +56,33 @@ input[type="checkbox"]:first-child {
   width: calc(var(--scale) / 3);
   height: calc(var(--scale) / 3);
 }
+/* End Dark mode toggle */
 
-/* end Dark mode toggle */
-
+/* Start grid-templating */
+body {
+  height: 100vh;
+  transition: var(
+    --transition
+  ); /* added a body transition for the change between light and dark mode */
+  display: grid;
+  grid-template:
+    [header-left] "header header header" 0.1fr [header-right]
+    [main-left] "leftAside main rightAside" 1fr [main-right]
+    [footer-left] "footer footer footer" 0.1fr [footer-right]
+    / 0.2fr 1fr 0.2fr;
+}
+/* End grid templating */
 
 header {
   background-color: #16697a;
-  /* min-height: var(--headerHeight); */
+  min-height: var(--headerHeight);
 
   align-items: center;
   grid-area: header;
 }
 main {
   grid-area: main;
-  /* min-height: calc(100vh - var(--headerHeight) - var(--footerHeight)); */
-  background-color: #EDE7E3;
+  background-color: #ede7e3;
 }
 #leftAside {
   grid-area: leftAside;
@@ -73,29 +90,26 @@ main {
 #rightAside {
   grid-area: rightAside;
 }
-#leftAside, #rightAside{
+#leftAside,
+#rightAside {
   background-color: #82c0cc;
 }
+#leftAside,
+main,
+#rightAside {
+  min-height: calc(100vh - var(--headerHeight) - var(--footerHeight));
+}
+
 footer {
   grid-area: footer;
   background-color: #ffa62b;
-  /* min-height: var(--footerHeight); */
+  min-height: var(--footerHeight);
 }
 
-/* added a body transition for the change between light and dark mode */
-body {
-  margin: 0;
-  transition: var(--transition);
-  display: grid;
-  grid-template-rows: 0.1fr 0.8fr 0.1fr;
-  grid-template-columns: 0.2fr 0.6fr 0.2fr;
-  grid-template-areas:
-    "header" "header" "header" 
-    "leftAside" "main" "rightAside"
-    "footer" "footer" "footer";
-}
 header,
+#leftAside,
 main,
+#rightAside,
 footer {
   transition: var(--transition);
 }
@@ -108,4 +122,9 @@ footer {
   width: 0px;
   height: var(--headerHeight);
   background-color: #82c0cc;
+  z-index: 1 ;
+}
+/* end of gradient */
+header nav{
+  z-index: 2;
 }

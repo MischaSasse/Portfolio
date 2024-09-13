@@ -130,7 +130,7 @@ dist
 .pnp.*
 
 # phpStorm
-./IDEA
+.idea
 
 # macos
 DS_Store
