@@ -67,7 +67,7 @@ body {
   display: grid;
   grid-template:
     [header-left] "header header header" 0.1fr [header-right]
-    [main-left] "leftAside main rightAside" 1fr [main-right]
+    [main-left] "main main main" 1fr [main-right]
     [footer-left] "footer footer footer" 0.1fr [footer-right]
     / 0.2fr 1fr 0.2fr;
 }
@@ -77,12 +77,12 @@ header {
   background-color: #16697a;
   min-height: calc(var(--scale) / 2 + 1rem);
   height: var(--headerHeight);
-  contain: content; 
+  contain: content;
   align-items: center;
   grid-area: header;
 }
 main {
-  grid-area: main;
+  grid-area: content;
   background-color: #ede7e3;
 }
 .leftAside {
@@ -127,7 +127,7 @@ footer {
   background-color: #82c0cc;
 }
 /* end of gradient */
-header nav{
+header nav {
   align-items: center;
   display: flex;
   justify-content: center;
@@ -138,7 +138,15 @@ header nav{
   left: 50%;
   transform: translate(-50%, -50%);
 }
-#innerHeaderContainer{
+#innerHeaderContainer {
   height: 100%;
   display: flex;
+}
+
+#contentContainer {
+  grid-area: main;
+  display: grid;
+  grid-template:
+    [content-left] "leftAside content rightAside" 100% [content-right]
+    / .2fr 1fr .2fr;
 }

@@ -1,9 +1,12 @@
 async function getHtmlData(number) {
   let wrapper = document.getElementById("contentContainer");
-  let htmlContent = await fetch("./hmtl/" + pageMap(number) + ".html");
-  console.log(htmlContent);
-  
-    wrapper.replaceChildren(htmlContent)
+  return await fetch("./html/" + pageMap(number) + ".html")
+    .then((response) => {
+      return response.text();
+    })
+    .then((html) => {
+      wrapper.innerHTML = html;
+    });
 }
 
 function pageMap(clickedPage) {
@@ -11,7 +14,6 @@ function pageMap(clickedPage) {
     0: "home",
     1: "contact",
     2: "about",
-    // '3':'contact'
   };
   return pageMap[clickedPage];
 }
