@@ -79,8 +79,8 @@ function darkMode(box, ball, header, footer) {
   box.setAttribute("style", "background-color:white;");
   ball.setAttribute("style", "transform:translatex(100%);");
   footer.setAttribute("style", "background-color:#884F00;");
-  document.getElementById('leftAside').setAttribute("style", "background-color:#2C626C;")
-  document.getElementById('rightAside').setAttribute("style", "background-color:#2C626C;")
+  document.getElementsByClassName('leftAside')[0].setAttribute("style", "background-color:#2C626C;")
+  document.getElementsByClassName('rightAside')[0].setAttribute("style", "background-color:#2C626C;")
   document.getElementsByTagName('main')[0].setAttribute("style", "background-color:#826653;")
   document.body.setAttribute("style", "color:#CCCCCC;")
   return;
@@ -98,8 +98,8 @@ function lightMode(box, ball, header, footer) {
   box.setAttribute("style", "background-color:black;");
   ball.setAttribute("style", "transform:translatex(0%);");
   footer.setAttribute("style", "background-color:#FFA62B;");
-  document.getElementById('leftAside').setAttribute("style", "background-color:#82C0CC;")
-  document.getElementById('rightAside').setAttribute("style", "background-color:#82C0CC;")
+  document.getElementsByClassName('leftAside')[0].setAttribute("style", "background-color:#82C0CC;")
+  document.getElementsByClassName('rightAside')[0].setAttribute("style", "background-color:#82C0CC;")
   document.getElementsByTagName('main')[0].setAttribute("style", "background-color:#EDE7E3;")
   document.body.setAttribute("style", "color:#000000;")
   return;
