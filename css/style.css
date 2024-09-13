@@ -75,7 +75,7 @@ body {
 
 header {
   background-color: #16697a;
-  min-height: calc(var(--scale) / 2 + 1rem);;
+  min-height: calc(var(--scale) / 2 + 1rem);
   height: var(--headerHeight);
   contain: content; 
   align-items: center;
@@ -85,19 +85,19 @@ main {
   grid-area: main;
   background-color: #ede7e3;
 }
-#leftAside {
+.leftAside {
   grid-area: leftAside;
 }
-#rightAside {
+.rightAside {
   grid-area: rightAside;
 }
-#leftAside,
-#rightAside {
+.leftAside,
+.rightAside {
   background-color: #82c0cc;
 }
-#leftAside,
+.leftAside,
 main,
-#rightAside {
+.rightAside {
   min-height: calc(100vh - var(--headerHeight) - var(--footerHeight));
 }
 
@@ -109,9 +109,9 @@ footer {
 
 header,
 header nav,
-#leftAside,
+.leftAside,
 main,
-#rightAside,
+.rightAside,
 footer {
   transition: var(--transition);
 }
