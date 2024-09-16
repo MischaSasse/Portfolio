@@ -1,4 +1,4 @@
-// darkmode toggle
+import './contentLoader'
 
 /**
  * @author Mischa Sasse

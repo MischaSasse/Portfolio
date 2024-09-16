@@ -4,7 +4,7 @@
  * @param {*} number 
  * @returns {string}
  */
-async function getHtmlData(number) {
+async function getContentData(number) {
   let wrapper = document.getElementById("contentContainer");
   return await fetch(`./component/${pageMap(number)}.html`)
     .then((response) => {
@@ -29,3 +29,11 @@ function pageMap(clickedPage) {
   };
   return pageMap[clickedPage];
 }
+
+//insert header
+
+//create <section id="contentContainer">
+
+//insert content into container
+
+//insert footer
