@@ -105,6 +105,8 @@ footer {
   grid-area: footer;
   background-color: #ffa62b;
   min-height: var(--footerHeight);
+  align-items: center;
+  display: flex;
 }
 
 header,
@@ -148,5 +150,24 @@ header nav {
   display: grid;
   grid-template:
     [content-left] "leftAside content rightAside" 100% [content-right]
-    / .2fr 1fr .2fr;
+    / 0.2fr 1fr 0.2fr;
+}
+
+.footerButton {
+  background-color: #ff9500;
+  border: 1px solid black;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 3rem;
+  padding: .2rem;
+  margin: 0 .2rem 0 .2rem;
+}
+.footerButton:first-child{
+  margin-left: .5rem;
+}
+.footerButton:hover {
+  cursor: pointer;
+  box-shadow: #ca7600 .188rem .188rem .5rem;
+  transition: var(--transition);
 }

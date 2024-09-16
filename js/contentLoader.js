@@ -6,7 +6,7 @@
  */
 async function getHtmlData(number) {
   let wrapper = document.getElementById("contentContainer");
-  return await fetch("./html/" + pageMap(number) + ".html")
+  return await fetch("./component/" + pageMap(number) + ".html")
     .then((response) => {
       return response.text();
     })
