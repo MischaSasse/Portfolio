@@ -41,6 +41,7 @@ function componentMap(x) {
   const componentMap = {
     0: "header",
     1: "footer",
+    2: "nav"
   };
   return componentMap[x];
 }
@@ -48,7 +49,7 @@ function componentMap(x) {
 /**
  * @author Mischa Sasse
  * @description
- * @returns {void}
+ * @returns {void} 
  */
 async function addHeader() {
   await fetch(`./component/${componentMap(0)}.html`)
@@ -56,9 +57,20 @@ async function addHeader() {
       return response.text();
     })
     .then((html) => {
+      // console.log(html);
       document.body.innerHTML += html;
     });
   return;
+}
+
+async function addNav(){
+  await fetch(`./component/${componentMap(2)}.html`)
+    .then((response) => {      
+      return response.text()
+    })
+    .then((html) => {
+      document.getElementsByTagName('header')[0].innerHTML += html;
+    });
 }
 
 /**
@@ -68,6 +80,7 @@ async function addHeader() {
  */
 async function createContainer() {
   await addHeader();
+  await addNav();
   let contentContainer = document.createElement("section");
   contentContainer.id = "contentContainer";
   return document.body.appendChild(contentContainer);

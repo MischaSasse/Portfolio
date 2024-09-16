@@ -171,3 +171,9 @@ header nav {
   box-shadow: #ca7600 .188rem .188rem .5rem;
   transition: var(--transition);
 }
+
+.footerButton:not(:hover){
+  box-shadow: none;
+  transition: var(--transition);
+
+}
