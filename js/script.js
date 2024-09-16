@@ -1,3 +1,96 @@
+//Start content loader
+/**
+ * @author Mischa Sasse
+ * @description This function fetches data from a different component folder and displays it for the one page application
+ * @param {*} number
+ * @returns {string}
+ */
+async function getContentData(number) {
+  let wrapper = document.getElementById("contentContainer");
+  return await fetch(`./component/${pageMap(number)}.html`)
+    .then((response) => {
+      return response.text();
+    })
+    .then((html) => {
+      wrapper.innerHTML = html;
+    });
+}
+
+/**
+ * @author Mischa Sasse
+ * @description This function returns a string, using a map, based on the given number
+ * @param {*} clickedPage
+ * @returns {string}
+ */
+function pageMap(clickedPage) {
+  const pageMap = {
+    0: "home",
+    1: "contact",
+    2: "about",
+  };
+  return pageMap[clickedPage];
+}
+
+function componentMap(x) {
+  const componentMap = {
+    0: "header",
+    1: "footer",
+  };
+  return componentMap[x];
+}
+
+//insert header
+async function addHeader() {
+  await fetch(`./component/${componentMap(0)}.html`)
+    .then((response) => {
+      return response.text();
+    })
+    .then((html) => {
+      // console.log("header", html);
+
+      document.body.innerHTML += html;
+    });
+}
+
+//create <section id="contentContainer">
+async function createContainer() {
+  await addHeader();
+  let contentContainer = document.createElement("section");
+  contentContainer.id = "contentContainer";
+  // console.log("container", contentContainer);
+  // console.log("header1", document.getElementsByTagName("header")[0]);
+  return document.body.appendChild(contentContainer);
+}
+//insert content into container
+async function getDefaultContentData() {
+  await createContainer();
+  let wrapper = document.getElementById("contentContainer");
+  // console.log("wrapper", wrapper);
+
+  return await fetch(`./component/${pageMap(0)}.html`)
+    .then((response) => {
+      return response.text();
+    })
+    .then((html) => {
+      // console.log("default", html);
+      wrapper.innerHTML = html;
+    });
+}
+//insert footer
+async function addFooter() {
+  await getDefaultContentData();
+  await fetch(`./component/${componentMap(1)}.html`)
+    .then((response) => {
+      return response.text();
+    })
+    .then((html) => {
+      // console.log("footer", html);
+      document.body.innerHTML += html;
+    });
+  let css = document.getElementsByTagName("link")[0];
+  css.href += ""; //reloads css
+}
+//end content loader
 
 /**
  * @author Mischa Sasse
@@ -5,7 +98,8 @@
  * @returns {void}
  */
 function startUp() {
-  addEventListener("DOMContentLoaded", () => {
+  addEventListener("DOMContentLoaded", async () => {
+    await addFooter();
     eventListenerDarkMode();
     eventListenerHeaderChangeWidth(event);
   });
@@ -48,9 +142,9 @@ function eventListenerHeaderChangeWidth() {
 /**
  * @author Mischa Sasse
  * @description This function gets the location of the mouse movement and changes the gradient bars width to the mouse location and the color depending on the colortheme
- * @param {*} check 
- * @param {*} gradient 
- * @param {*} e 
+ * @param {*} check
+ * @param {*} gradient
+ * @param {*} e
  * @returns {void}
  */
 function changeGradientColor(check, gradient, e) {
@@ -78,10 +172,16 @@ function darkMode(box, ball, header, footer) {
   box.setAttribute("style", "background-color:white;");
   ball.setAttribute("style", "transform:translatex(100%);");
   footer.setAttribute("style", "background-color:#884F00;");
-  document.getElementsByClassName('leftAside')[0].setAttribute("style", "background-color:#2C626C;")
-  document.getElementsByClassName('rightAside')[0].setAttribute("style", "background-color:#2C626C;")
-  document.getElementsByTagName('main')[0].setAttribute("style", "background-color:#826653;")
-  document.body.setAttribute("style", "color:#CCCCCC;")
+  document
+    .getElementsByClassName("leftAside")[0]
+    .setAttribute("style", "background-color:#2C626C;");
+  document
+    .getElementsByClassName("rightAside")[0]
+    .setAttribute("style", "background-color:#2C626C;");
+  document
+    .getElementsByTagName("main")[0]
+    .setAttribute("style", "background-color:#826653;");
+  document.body.setAttribute("style", "color:#CCCCCC;");
   return;
 }
 
@@ -91,16 +191,22 @@ function darkMode(box, ball, header, footer) {
  * @param {*} box
  * @param {*} ball
  * @returns {void}
-*/
+ */
 function lightMode(box, ball, header, footer) {
   header.setAttribute("style", "background-color:#16697A;");
   box.setAttribute("style", "background-color:black;");
   ball.setAttribute("style", "transform:translatex(0%);");
   footer.setAttribute("style", "background-color:#FFA62B;");
-  document.getElementsByClassName('leftAside')[0].setAttribute("style", "background-color:#82C0CC;")
-  document.getElementsByClassName('rightAside')[0].setAttribute("style", "background-color:#82C0CC;")
-  document.getElementsByTagName('main')[0].setAttribute("style", "background-color:#EDE7E3;")
-  document.body.setAttribute("style", "color:#000000;")
+  document
+    .getElementsByClassName("leftAside")[0]
+    .setAttribute("style", "background-color:#82C0CC;");
+  document
+    .getElementsByClassName("rightAside")[0]
+    .setAttribute("style", "background-color:#82C0CC;");
+  document
+    .getElementsByTagName("main")[0]
+    .setAttribute("style", "background-color:#EDE7E3;");
+  document.body.setAttribute("style", "color:#000000;");
   return;
 }
 
