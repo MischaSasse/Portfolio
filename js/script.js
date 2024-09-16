@@ -1,4 +1,3 @@
-import './contentLoader'
 
 /**
  * @author Mischa Sasse
