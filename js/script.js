@@ -31,6 +31,12 @@ function pageMap(clickedPage) {
   return pageMap[clickedPage];
 }
 
+/**
+ * @author Mischa Sasse
+ * @description This function maps the header and footer component to numbers
+ * @param {*} x
+ * @returns {string}
+ */
 function componentMap(x) {
   const componentMap = {
     0: "header",
@@ -39,44 +45,56 @@ function componentMap(x) {
   return componentMap[x];
 }
 
-//insert header
+/**
+ * @author Mischa Sasse
+ * @description
+ * @returns {void}
+ */
 async function addHeader() {
   await fetch(`./component/${componentMap(0)}.html`)
     .then((response) => {
       return response.text();
     })
     .then((html) => {
-      // console.log("header", html);
-
       document.body.innerHTML += html;
     });
+  return;
 }
 
-//create <section id="contentContainer">
+/**
+ * @author Mischa Sasse
+ * @description This function creates a new element to append content into
+ * @returns {HTMLElement}
+ */
 async function createContainer() {
   await addHeader();
   let contentContainer = document.createElement("section");
   contentContainer.id = "contentContainer";
-  // console.log("container", contentContainer);
-  // console.log("header1", document.getElementsByTagName("header")[0]);
   return document.body.appendChild(contentContainer);
 }
-//insert content into container
+
+/**
+ * @author Mischa Sasse
+ * @description This function fetches the default content when people get onto index.html
+ * @returns {HTMLElement}
+ */
 async function getDefaultContentData() {
   await createContainer();
   let wrapper = document.getElementById("contentContainer");
-  // console.log("wrapper", wrapper);
-
   return await fetch(`./component/${pageMap(0)}.html`)
     .then((response) => {
       return response.text();
     })
     .then((html) => {
-      // console.log("default", html);
-      wrapper.innerHTML = html;
+      return (wrapper.innerHTML = html);
     });
 }
-//insert footer
+
+/**
+ * @author Mischa Sasse
+ * @description This function adds the footer and reloads css after all components are loaded
+ * @returns {void}
+ */
 async function addFooter() {
   await getDefaultContentData();
   await fetch(`./component/${componentMap(1)}.html`)
@@ -84,12 +102,12 @@ async function addFooter() {
       return response.text();
     })
     .then((html) => {
-      // console.log("footer", html);
-      document.body.innerHTML += html;
+      return (document.body.innerHTML += html);
     });
   let css = document.getElementsByTagName("link")[0];
-  css.href += ""; //reloads css
+  return (css.href += ""); //reloads css
 }
+
 //end content loader
 
 /**
