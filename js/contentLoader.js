@@ -1,3 +1,9 @@
+/**
+ * @author Mischa Sasse 
+ * @description This function fetches data from a different component folder and displays it for the one page application
+ * @param {*} number 
+ * @returns {string}
+ */
 async function getHtmlData(number) {
   let wrapper = document.getElementById("contentContainer");
   return await fetch("./html/" + pageMap(number) + ".html")
@@ -6,9 +12,15 @@ async function getHtmlData(number) {
     })
     .then((html) => {
       wrapper.innerHTML = html;
-    });
+    }); 
 }
 
+/**
+ * @author Mischa Sasse
+ * @description This function returns a string, using a map, based on the given number 
+ * @param {*} clickedPage 
+ * @returns {string}
+ */
 function pageMap(clickedPage) {
   const pageMap = {
     0: "home",
