@@ -160,20 +160,50 @@ header nav {
   text-decoration: none;
   display: inline-block;
   border-radius: 3rem;
-  padding: .2rem;
-  margin: 0 .2rem 0 .2rem;
+  padding: 0.2rem;
+  margin: 0 0.2rem 0 0.2rem;
 }
-.footerButton:first-child{
-  margin-left: .5rem;
+.footerButton:first-child {
+  margin-left: 0.5rem;
 }
 .footerButton:hover {
   cursor: pointer;
-  box-shadow: #ca7600 .188rem .188rem .5rem;
+  box-shadow: #ca7600 0.188rem 0.188rem 0.5rem;
   transition: var(--transition);
 }
 
-.footerButton:not(:hover){
+.footerButton:not(:hover) {
   box-shadow: none;
   transition: var(--transition);
+}
 
+main {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.overview {
+  top: 50%;
+  position: relative;
+  background-color: #82c0cc;
+  width: 50%;
+  height: 75%;
+  box-shadow: #16697a 5px 5px 10px;
+  border-radius: 6px;
+  border: #16697a solid 2px;
+}
+
+.overview:hover {
+  transition: var(--transition);
+  transform: translateY(-50%) scale(1.2);
+}
+
+.overview:not(:hover) {
+  transition: var(--transition);
+  transform: translateY(-50%) scale(1);
+}
+
+body:has(.overview:hover) {
+  filter: brightness(50%);
 }

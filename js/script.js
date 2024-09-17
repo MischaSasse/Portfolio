@@ -79,7 +79,7 @@ async function addNav(){
  * @returns {HTMLElement}
  */
 async function createContainer() {
-  await addHeader();
+  addHeader();
   await addNav();
   let contentContainer = document.createElement("section");
   contentContainer.id = "contentContainer";
